@@ -1,0 +1,33 @@
+/*
+https://twitter.com/pryinkaxxx1
+https://twitter.com/Dnlvideo2
+https://twitter.com/Vertiz3436
+https://twitter.com/Bait_Shop
+https://twitter.com/lovetoy_ca
+https://twitter.com/Hdvidsxx
+*/
+
+https://stackoverflow.com/questions/51845559/generate-sha-1-for-flutter-react-native-android-native-app
+
+
+Login Id :- rakeshsuvidya@gmail.com
+password :- singh123
+
+Most of the times while implementing dependencies like:
+
+implementation 'androidx.browser:browser:1.2.0'
+the above window pops-up in the browser.
+
+Here, is a way to resolve it successfully.
+
+Step 1-
+
+https://console.cloud.google.com/apis/library/androidcheck.googleapis.com
+
+https://stackoverflow.com/questions/51845559/generate-sha-1-for-flutter-react-native-android-native-app
+
+https://stackoverflow.com/questions/64999106/how-to-disable-recaptcha-in-firebase-phone-auth-otp-android
+
+https://github.com/bennyboer/bbb_app
+https://github.com/pion/ion-sdk-flutter
+https://github.com/aliyazdi75/flutter_chat

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "93429636162",
+    "project_id": "tally-konnect-55ffb",
+    "storage_bucket": "tally-konnect-55ffb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:93429636162:android:f887b3decd26061cfa61db",
+        "android_client_info": {
+          "package_name": "com.tally.konnect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "93429636162-tj41r487teld74g63o9ckvnln2sagsea.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDI5WnUE4TVWuPe4N3ZF8Gx9Pqaol3X1Xc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "93429636162-tj41r487teld74g63o9ckvnln2sagsea.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">93429636162-tj41r487teld74g63o9ckvnln2sagsea.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">93429636162</string>
+    <string name="google_api_key" translatable="false">AIzaSyDI5WnUE4TVWuPe4N3ZF8Gx9Pqaol3X1Xc</string>
+    <string name="google_app_id" translatable="false">1:93429636162:android:f887b3decd26061cfa61db</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDI5WnUE4TVWuPe4N3ZF8Gx9Pqaol3X1Xc</string>
+    <string name="google_storage_bucket" translatable="false">tally-konnect-55ffb.appspot.com</string>
+    <string name="project_id" translatable="false">tally-konnect-55ffb</string>
+</resources>
