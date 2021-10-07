@@ -49,6 +49,24 @@ class AuthModel extends ChangeNotifier {
       print('AuthException -> $e');
     }
   }
+  Future<void> forgotpass({
+    required String email,
+
+  }) async {
+    try {
+      print('Authentication  => $email');
+       await _instance.sendPasswordResetEmail(email: email);
+
+    } on FirebaseAuthException catch (e) {
+      print('FirebaseAuthException => $e');
+
+      // user-not-found
+      // wrong-password
+      // too-many-requests
+    } catch (e) {
+      print('AuthException -> $e');
+    }
+  }
 
   static AuthModel of(BuildContext context) {
     return context.read<AuthModel>();

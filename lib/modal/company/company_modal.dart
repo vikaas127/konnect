@@ -10,7 +10,6 @@ class CompanyModal {
   String? startingFrom;
   String? openingBalance;
   String? closingBalance;
-
   bool? exportToCloud;
 
   CompanyModal({

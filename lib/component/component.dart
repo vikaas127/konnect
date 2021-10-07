@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:konnect/theme/mycolors.dart';
+import 'package:konnect/theme/theme.dart';
 
 class Header extends StatelessWidget {
   final String label;
@@ -12,15 +14,12 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(12),
-      alignment: Alignment.center,
-      color: Colors.grey[400],
+      padding: EdgeInsets.all(10),
+      alignment: Alignment.centerLeft,
+      color: MyColors.iconc,
       child: Text(
         label,
-        style: TextStyle(
-          fontSize: 18,
-          color: Colors.white,
-        ),
+        style:theme().title14w
       ),
     );
   }
@@ -60,8 +59,8 @@ class Button extends StatelessWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: style ??
-                TextStyle(
-                  fontSize: 10,
+                TextStyle(color: MyColors.primary,
+                  fontSize: 11,
                   fontWeight: FontWeight.bold,
                 ),
           ),
@@ -134,7 +133,7 @@ class SearchListView extends StatelessWidget {
                       ],
                       style: TextStyle(
                         fontSize: 24,
-                        color: Colors.blue,
+                        color: MyColors.primary,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

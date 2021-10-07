@@ -99,71 +99,58 @@ class AccountDocument {
 
     return snapshot.exists ? snapshot.data() : null;
   }
-
   /* ********************************************************** */
-
   Future<List<ItemModal>> getItems() async {
     var snapshot = await _itemReference.get();
     print('${_itemReference.id} has ${snapshot.size} document');
     return snapshot.docs.map((element) => element.data()).toList();
   }
-
   Future<List<GroupModal>> getGroups() async {
     var snapshot = await groupReference.get();
     print('${groupReference.id} has ${snapshot.size} document');
     return snapshot.docs.map((element) => element.data()).toList();
   }
-
   Future<List<LedgerModal>> getLedger() async {
     var snapshot = await ledgerReference.orderBy('NAME').get();
     print('${ledgerReference.id} has ${snapshot.size} document');
     return snapshot.docs.map((element) => element.data()).toList();
   }
-
   /* ********************************************************** */
-
   Future<List<StockModal>> getStock() async {
     var snapshot = await stockReference.get();
     print('${stockReference.id} has ${snapshot.size} document');
     return snapshot.docs.map((element) => element.data()).toList();
   }
-
   Future<List<InvoiceModal>> getSales() async {
     var snapshot = await salesReference.get();
     print('${salesReference.id} has ${snapshot.size} document');
     return snapshot.docs.map((element) => element.data()).toList();
   }
-
   Future<List<InvoiceModal>> getReceipt() async {
     var snapshot = await receiptReference.get();
     print('${receiptReference.id} has ${snapshot.size} document');
     return snapshot.docs.map((element) => element.data()).toList();
   }
-
   Future<List<InvoiceModal>> getPayment() async {
     var snapshot = await paymentReference.get();
     print('${paymentReference.id} has ${snapshot.size} document');
     return snapshot.docs.map((element) => element.data()).toList();
   }
-
   Future<List<InvoiceModal>> getPurchase() async {
     var snapshot = await purchaseReference.get();
     print('${purchaseReference.id} has ${snapshot.size} document');
     return snapshot.docs.map((element) => element.data()).toList();
   }
-
   Future<List<InvoiceModal>> getDebitNote() async {
     var snapshot = await debitNoteReference.get();
     print('${debitNoteReference.id} has ${snapshot.size} document');
     return snapshot.docs.map((element) => element.data()).toList();
   }
-
   Future<List<InvoiceModal>> getCreditNote() async {
     var snapshot = await creditNoteReference.get();
     print('${creditNoteReference.id} has ${snapshot.size} document');
     return snapshot.docs.map((element) => element.data()).toList();
   }
-
   Future<List<StatementModal>> getStatement() async {
     var snapshot = await statementReference.get();
     print('${statementReference.id} has ${snapshot.size} document');

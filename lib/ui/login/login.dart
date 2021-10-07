@@ -1,14 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:konnect/modal/modal.dart';
+import 'package:konnect/theme/MyText.dart';
+import 'package:konnect/theme/mycolors.dart';
 import 'package:konnect/theme/theme.dart';
 
+import 'Forgot_password.dart';
+
 class LoginPage extends StatelessWidget {
-  final controllerEmailId = TextEditingController();
-  final controllerPassword = TextEditingController();
+  final controllerEmailId = TextEditingController(text: 'rakeshsuvidya@gmail.com');
+  final controllerPassword = TextEditingController(text: 'singh123');
 
   TextStyle get _style => TextStyle(
-        color: Colors.white,
+        color: Colors.blueAccent,
         fontWeight: FontWeight.bold,
       );
 
@@ -16,7 +20,118 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     bool _obscureText = true;
     return Scaffold(backgroundColor: Colors.white,
-      body: ListView(
+      body:
+      /* Stack(
+        children: <Widget>[
+          Container(color: MyColors.primary, height: 220),
+          Column(
+            children: <Widget>[
+              Container(height: 40),
+              Container(
+                child: Image.asset('assets/logo.png'),
+                  color: Colors.white,
+
+                width: 80, height: 80,
+              ),
+              Card(
+                  shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(6)),
+                  margin: EdgeInsets.all(25),
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  child :  Container(
+                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Container(height: 25),
+                        Text("SIGN IN", style: MyText.title(context)!.copyWith(
+                            color: Colors.black26, fontWeight: FontWeight.bold
+                        )),
+                        TextField(
+
+                          keyboardType: TextInputType.text,
+                          style: TextStyle(color: Colors.white),
+                          decoration: InputDecoration(labelText: "Email",
+                            labelStyle: theme.title12,
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color:Colors.blueGrey, width: 1),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.blueGrey, width: 2),
+                            ),
+                          ),
+                        ),
+                        Container(height: 25),
+                        TextField(
+                          keyboardType: TextInputType.text,
+                          style: TextStyle(color: Colors.white),
+                          decoration: InputDecoration(labelText: "Password",
+                            labelStyle: TextStyle(color: Colors.blueGrey[400]),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.blueGrey, width: 1),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.blueGrey, width: 2),
+                            ),
+                          ),
+                        ),
+                        Container(height: 25),
+                        Container(
+                          width: double.infinity,
+                          height: 40,
+                          child: FlatButton(
+                            child: Text("SUBMIT",
+                              style: TextStyle(color: Colors.white),),
+                            color: MyColors.primary,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(20)
+                            ),
+                            onPressed: () {
+
+                              //BottomNavigationMainRoute
+                            },
+                          ),
+                        ),
+                        Container(
+                          width: double.infinity,
+                          child: FlatButton(
+                            child: Text("Forgot Password?",
+                              style: TextStyle(color: MyColors.primaryLight),),
+                            color: Colors.transparent,
+                            onPressed: () {
+
+                            },
+                          ),
+                        ),
+                        Container(
+                          width: double.infinity,
+                          child: FlatButton(
+                            child: Text("New user? Sign Up",
+                              style: TextStyle(color: MyColors.primaryLight),),
+                            color: Colors.transparent,
+                            onPressed: () {
+                            *//*
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                    // VerificationPhoneRoute()
+                                    // LoginCardOverlapRoute()
+                                    FormSignUpRoute()
+                                ),
+                              );*/
+      /*
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+              )
+            ],
+          )
+        ],
+      ),*/
+      ListView(
           padding: EdgeInsets.only(left: 24, right: 24),
           shrinkWrap: true,
           children: [
@@ -29,7 +144,10 @@ class LoginPage extends StatelessWidget {
               ),
             ),
            // SizedBox(height: MediaQuery.of(context).size.height*.02,),
-            Center(child: Text('WelCome To Tally Konnect',style:theme().title22 ,)),
+            Container(
+                padding: EdgeInsets.all(18),
+                child:
+                Center(child: Text('Login',style:theme().title18 ,))),
             SizedBox(height: MediaQuery.of(context).size.height*.05,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 4),
@@ -37,63 +155,20 @@ class LoginPage extends StatelessWidget {
                 child: TextFormField(
                   keyboardType: TextInputType.emailAddress,
                   autofocus: false,
-
                   style: _style,
-
                   controller: controllerEmailId,
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(30.0)),
+                    border: OutlineInputBorder(borderRadius:
+                    BorderRadius.circular(30.0)),
                     hintText: 'Email',
-                    hintStyle: theme().title16w,
+                    fillColor: Colors.grey,
+
+                    hintStyle: theme().title16g,
                        prefixIcon: Icon(
     Icons.email_outlined,
-    color: Colors.white,
+    color: Colors.grey,
     ),
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              width: MediaQuery.of(context).size.width/1.2,
-              height: 45,
-              margin: EdgeInsets.only(top: 32),
-              padding: EdgeInsets.only(
-                  top: 4,left: 16, right: 16, bottom: 4
-              ),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(
-                      Radius.circular(50)
-                  ),
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.black12,
-                        blurRadius: 5
-                    )
-                  ]
-              ),
-              child: TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  icon: Icon(Icons.vpn_key,
-                    color: Color(0xff6bceff),
-                  ),
-                  hintText: 'Password',
-                ),
-              ),
-            ),
-
-            Align(
-              alignment: Alignment.centerRight,
-              child: Padding(
-                padding: const EdgeInsets.only(
-                    top: 16, right: 32
-                ),
-                child: Text('Forgot Password ?',
-                  style: TextStyle(
-                      color: Colors.grey
                   ),
                 ),
               ),
@@ -107,20 +182,22 @@ class LoginPage extends StatelessWidget {
                     style: _style,
                     controller: controllerPassword,
                     decoration: InputDecoration(
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(30.0)),
-                      hintText: 'Password', contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                      hintStyle: theme().title16w,
+                      border: OutlineInputBorder(borderRadius:
+                      BorderRadius.circular(30.0)),
+                      hintText: 'Password', contentPadding:
+                    EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                      hintStyle: theme().title16g,
                       suffixIcon: IconButton(
                         icon: Icon(
                           _obscureText ? Icons.visibility : Icons.visibility_off,
-                          color: Colors.white,
+                          color: Colors.grey,
                         ),
                         onPressed: () =>
                             setState(() => _obscureText = !_obscureText),
                       ),
                       prefixIcon: Icon(
                         Icons.lock_open,
-                        color: Colors.white,
+                        color: Colors.grey,
                       ),
                     //  hintText: 'Password',
                     ),
@@ -131,7 +208,15 @@ class LoginPage extends StatelessWidget {
             ),
             SizedBox(height: 20),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                    builder: (BuildContext context) =>
+                // VerificationPhoneRoute()
+                ForgotPage()
+                ));
+              },
               child: Container(
                   padding: EdgeInsets.all(18),
                   child:

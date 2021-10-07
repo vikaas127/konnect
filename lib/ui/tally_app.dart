@@ -3,16 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:konnect/modal/modal.dart';
 import 'package:konnect/component/route_name.dart';
 import 'package:konnect/services/firestore_services.dart';
+import 'package:konnect/theme/mycolors.dart';
 
 import 'package:provider/provider.dart';
 
+import 'home.dart';
 import 'index/index.dart';
 import 'login/login.dart';
 import 'account/account.dart';
 import 'network/connectivity.dart';
 
 var scaffoldKey = GlobalKey<ScaffoldMessengerState>();
-
 Route _onGenerateRoute(RouteSettings settings) {
   return MaterialPageRoute(
     builder: (BuildContext context) {
@@ -99,7 +100,6 @@ Route _onGenerateRoute(RouteSettings settings) {
     settings: settings,
   );
 }
-
 Widget startApp() => MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => PeriodsModal()),
@@ -136,16 +136,21 @@ Widget startApp() => MultiProvider(
                 ? NoConnectivity()
                 : auth.isSignedIn
                     ? LoginPage()
-                    : IndexPage(),
+                    : home(),
           ),
         ),
         theme: ThemeData(
+          primaryColor: MyColors.primary,
+          accentColor: MyColors.primary,
+          primaryColorDark: MyColors.primary,
+          primaryColorLight: MyColors.primary,
           fontFamily: 'Times New Roman',
+
           inputDecorationTheme: InputDecorationTheme(
-            filled: true,
-            fillColor: Colors.black38,
+
+
             hintStyle: TextStyle(
-              color: Colors.white,
+              color: Color(0xff374ABE),
               fontWeight: FontWeight.bold,
             ),
             border: OutlineInputBorder(),

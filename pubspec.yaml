@@ -1,17 +1,13 @@
 name: konnect
 description: BUSINESS AUTOMATION APP FOR ALL SIZES & TYPES OF BUSINESSES
-
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
-
 version: 1.0.0+1
-
 environment:
   sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-
   pdf: ^3.4.2
   intl: ^0.17.0
   share: ^2.0.4
@@ -22,10 +18,15 @@ dependencies:
   url_strategy: ^0.2.0
   path_provider: ^2.0.2
   firebase_auth: ^3.0.2
+  image_picker:
   cupertino_icons: ^1.0.3
   cloud_firestore: ^2.5.0
+  firebase_storage: ^10.0.3
   advance_pdf_viewer: ^2.0.0
   double_back_to_close: ^2.0.0
+  webview_flutter:
+  fluttertoast:
+  shimmer:
 
 dev_dependencies:
   flutter_test:
