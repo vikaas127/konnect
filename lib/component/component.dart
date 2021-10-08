@@ -47,10 +47,33 @@ class Button extends StatelessWidget {
         children: [
           SizedBox(height: 6),
           if (label.isNotEmpty) ...[
-            CircleAvatar(
-              radius: 18,
-              backgroundColor: Colors.white,
-              backgroundImage: AssetImage(icon ?? 'assets/icons/kmb.png'),
+            Container(
+              child: Container(
+                decoration: BoxDecoration(
+
+
+                color:Colors.white,
+                border: Border.all(color:Color(0xFFD6D6D6),
+                    width: 2.0
+                ),
+                borderRadius: BorderRadius.all(
+                    Radius.circular(30.0) //                 <--- border radius here
+                ),
+              ),
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: CircleAvatar(
+                    radius: 19,
+                    backgroundColor: Color(0xFFE0E0E0),
+                    child: Padding(
+                      padding: const EdgeInsets.all(6.5),
+                      child: Image.asset(
+                          icon ?? 'assets/icons/kmb.png',
+                        color: MyColors.primary,),
+                    ),
+                  ),
+                ),
+              ),
             ),
             SizedBox(height: 12)
           ],
@@ -70,7 +93,72 @@ class Button extends StatelessWidget {
     );
   }
 }
+class Tablerow extends StatelessWidget {
 
+  final TextStyle? style;
+  final String label;
+  final String? icon;
+
+  const Tablerow(
+      this.label, {
+        Key? key,
+        this.icon,
+        this.style,
+
+      }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: null,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(height: 6),
+          if (label.isNotEmpty) ...[
+            Container(
+              child: Container(
+                decoration: BoxDecoration(
+
+
+                  color: Colors.grey,
+                  border: Border.all(
+                      width: 2.0
+                  ),
+                  borderRadius: BorderRadius.all(
+                      Radius.circular(30.0) //                 <--- border radius here
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(6.0),
+                  child: CircleAvatar(
+                    radius: 10,
+                    backgroundColor: Color(0xFFEEEEEE),
+                    child: Image.asset(
+                      icon ?? 'assets/icons/kmb.png',
+                      color: MyColors.primary,),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(width: 12)
+          ],
+          Text(
+            label,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: style ??
+                TextStyle(color: MyColors.primary,
+                  fontSize: 11,
+                  fontWeight: FontWeight.bold,
+                ),
+          ),
+          SizedBox(height: 6),
+        ],
+      ),
+    );
+  }
+}
 class SearchListView extends StatelessWidget {
   final TextEditingController? controller;
   final List<Widget> children;
@@ -86,7 +174,7 @@ class SearchListView extends StatelessWidget {
     final tvController = controller ?? TextEditingController();
     return Column(
       children: [
-        Container(
+     /*   Container(
           margin: EdgeInsets.all(12),
           child: TextFormField(
             cursorColor: Colors.white,
@@ -114,7 +202,7 @@ class SearchListView extends StatelessWidget {
               ),
             ),
           ),
-        ),
+        ),*/
         Expanded(
           child: tvController.text.isNotEmpty && children.isEmpty
               ? Center(

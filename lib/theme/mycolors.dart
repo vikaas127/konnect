@@ -3,14 +3,16 @@ import 'package:flutter/material.dart';
 
 class MyColors {
 //  Color(0xff374ABE);
-  static const Color primary =Color(0xff374ABE);
-  static const Color primaryDark = Color(0xff374ABE);
-  static const Color primaryLight =Color(0xff374ABE);
-  static const Color accent = Color(0xff374ABE);
-  static const Color accentDark = Color(0xff374ABE);
-  static const Color accentLight = Color(0xff374ABE);
-  static const Color iconc = Color(0xffFD6A02);
-
+  static const Color primary =Color(0xff1E2C5B);
+  static const Color primaryDark = Color(0xff1E2C5B);
+  static const Color primaryLight =Color(0xff1E2C5B);
+  static const Color accent = Color(0xff1E2C5B);
+  static const Color accentDark = Color(0xff1E2C5B);
+  static const Color accentLight = Color(0xff1E2C5B);
+  static const Color iconc = Color(0xffF04726);
+  static const Color gradient1=Color(0xff393C5F);
+  static const Color gradient2=Color(0xff1B2956);
+  static const Color gradient3=Color(0xff424B6A);
   static const Color grey_3 = Color(0xFFf7f7f7);
   static const Color grey_5 = Color(0xFFf2f2f2);
   static const Color grey_10 = Color(0xFFe6e6e6);

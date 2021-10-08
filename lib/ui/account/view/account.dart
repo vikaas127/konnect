@@ -44,154 +44,174 @@ appBar:  AppBar(backgroundColor: MyColors.primary,
 
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Card(color: MyColors.primary,
-                    borderOnForeground: true,
-                    shadowColor: Colors.black,
-                    shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                    child: Table(
-                      columnWidths: {
-                        0: FlexColumnWidth(0.5),
-                        1: FlexColumnWidth(2.4),
-                      },
-                      children: [
-                        TableRow(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                left: 12,
-                                top: 6,
-                                bottom: 6,
-                              ),
-                              child: Icon(Icons.person,color:MyColors.iconc
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 6, bottom: 6, right: 12),
-                              child: Text(
-                                company.name ?? '',
-                                style: theme().title16w
+                  child: Container(
 
-                              ),
-                            ),
-                          ],
-                        ),
-                        TableRow(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                left: 12,
-                                top: 6,
-                                bottom: 6,
-                              ),
-                              child: Icon(Icons.email,color:MyColors.iconc),
-                            ),
+                    child: Card(color: MyColors.primary,
+                      borderOnForeground: true,
 
-                            Padding(
-                              padding: const EdgeInsets.only(top: 6, bottom: 6, right: 12),
-                              child: Text(
-                                company.email ?? '',
-                                style: theme().title14w,
-                              ),
-                            ),
-                          ],
+                      shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                      child: Container( decoration: BoxDecoration(
+
+                        gradient: LinearGradient(
+                            begin: Alignment.bottomLeft,
+                            end: Alignment.topRight,
+                            colors: [ MyColors.gradient3,MyColors.gradient1,MyColors.gradient2,MyColors.primary,
+                              MyColors.gradient1, MyColors.gradient3 ]),
+                        color: Colors.grey,
+                        border: Border.all(
+                            width: 0.0
                         ),
-                        TableRow(
-                          children: [
-                            Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 12,
-                                  top: 6,
-                                  bottom: 6,
-                                ),
-                                child: Container(height:20,width:20,child: Image.asset('assets/gst.png',color: MyColors.iconc,))
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 6, bottom: 6, right: 12),
-                              child: Text(
-                                company.gstin ?? '',
-                                style: theme().title14w,
-                              ),
-                            ),
-                          ],
+                        borderRadius: BorderRadius.all(
+                            Radius.circular(15.0) //                 <--- border radius here
                         ),
-                        TableRow(
+                      ),
+                        child: Table(
+                          columnWidths: {
+                            0: FlexColumnWidth(0.5),
+                            1: FlexColumnWidth(2.4),
+                          },
                           children: [
-                            Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 12,
-                                  top: 6,
-                                  bottom: 6,
+                            TableRow(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                    left: 12,
+                                    top: 6,
+                                    bottom: 6,
+                                  ),
+                                  child: Icon(Icons.person,color:MyColors.white
+                                  ),
                                 ),
-                                child: Icon(Icons.account_balance_outlined,color:MyColors.iconc)
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 6, bottom: 6, right: 12),
-                              child: Text(
-                                company.getAddress,
-                                style: theme().title14w
-                              ),
-                            ),
-                          ],
-                        ),
-                        TableRow(
-                          children: [
-                            Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 12,
-                                  top: 6,
-                                  bottom: 6,
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 6, bottom: 6, right: 12),
+                                  child: Text(
+                                    company.name ?? '',
+                                    style: theme().title16w
+
+                                  ),
                                 ),
-                                child: Icon(Icons.calendar_today,color:MyColors.iconc)
+                              ],
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 6, bottom: 6, right: 12),
-                              child: Container(width: 90,alignment: Alignment.centerLeft,
-                                height: 35,
-                                margin: const EdgeInsets.symmetric(horizontal: 75.0),
+                            TableRow(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                    left: 12,
+                                    top: 6,
+                                    bottom: 6,
+                                  ),
+                                  child: Icon(Icons.email,color:MyColors.white),
+                                ),
+
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 6, bottom: 6, right: 12),
+                                  child: Text(
+                                    company.email ?? '',
+                                    style: theme().title14w,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            TableRow(
+                              children: [
+                                Padding(
+                                    padding: const EdgeInsets.only(
+                                      left: 12,
+                                      top: 6,
+                                      bottom: 6,
+                                    ),
+                                    child: Container(height:20,width:20,child: Image.asset('assets/gst.png',color:
+                                    MyColors.white,))
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 6, bottom: 6, right: 12),
+                                  child: Text(
+                                    company.gstin ?? '',
+                                    style: theme().title14w,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            TableRow(
+                              children: [
+                                Padding(
+                                    padding: const EdgeInsets.only(
+                                      left: 12,
+                                      top: 6,
+                                      bottom: 6,
+                                    ),
+                                    child: Icon(Icons.account_balance_outlined,color:MyColors.white)
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 6, bottom: 6, right: 12),
+                                  child: Text(
+                                    company.getAddress,
+                                    style: theme().title14w
+                                  ),
+                                ),
+                              ],
+                            ),
+                            TableRow(
+                              children: [
+                                Padding(
+                                    padding: const EdgeInsets.only(
+                                      left: 12,
+                                      top: 6,
+                                      bottom: 6,
+                                    ),
+                                    child: Icon(Icons.calendar_today,color:MyColors.white)
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 6, bottom: 6, right: 12),
+                                  child: Container(width: 90,alignment: Alignment.centerLeft,
+                                    height: 35,
+                                    margin: const EdgeInsets.symmetric(horizontal: 75.0),
     padding: const EdgeInsets.all(1.0),
     decoration: BoxDecoration(borderRadius: BorderRadius.circular(15.0),
     border: Border.all(color: MyColors.iconc)
     ),
-                                child: DropdownButton<String>( icon: Icon(Icons.arrow_drop_down_sharp,color: MyColors.primary,),
-                                  underline: Container(),
-                                  items: <String>['A', 'B', 'C', 'D'].map((String value) {
-                                    return DropdownMenuItem<String>(
-                                      value: value,
-                                      child: Container(width: 100,
-                                          child: Text(value)),
-                                    );
-                                  }).toList(),
-                                  onChanged: (_) {},
-                                ),
-                              )
+                                    child: DropdownButton<String>( icon: Icon(Icons.arrow_drop_down_sharp,color: MyColors.primary,),
+                                      underline: Container(),
+                                      items: <String>['A', 'B', 'C', 'D'].map((String value) {
+                                        return DropdownMenuItem<String>(
+                                          value: value,
+                                          child: Container(width: 100,
+                                              child: Text(value)),
+                                        );
+                                      }).toList(),
+                                      onChanged: (_) {},
+                                    ),
+                                  )
 
+                                ),
+                              ],
                             ),
+                            /*TableRow(
+                    children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 12, top: 6, bottom: 12),
+                          child: Text(
+                            'Closing Bal.',
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            top: 6,
+                            bottom: 6,
+                            right: 12,
+                          ),
+                          child: Text(
+                            '₹ ${company.closingBalance}',
+                            style: TextStyle(fontSize: 15),
+                          ),
+                        ),
+                    ],
+                ),*/
                           ],
                         ),
-                        /*TableRow(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 12, top: 6, bottom: 12),
-                      child: Text(
-                        'Closing Bal.',
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        top: 6,
-                        bottom: 6,
-                        right: 12,
-                      ),
-                      child: Text(
-                        '₹ ${company.closingBalance}',
-                        style: TextStyle(fontSize: 15),
-                      ),
-                    ),
-                  ],
-                ),*/
-                      ],
                     ),
                   ),
                 ),

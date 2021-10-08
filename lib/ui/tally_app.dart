@@ -144,7 +144,7 @@ Widget startApp() => MultiProvider(
           accentColor: MyColors.primary,
           primaryColorDark: MyColors.primary,
           primaryColorLight: MyColors.primary,
-          fontFamily: 'Times New Roman',
+          //fontFamily: 'Times New Roman',
 
           inputDecorationTheme: InputDecorationTheme(
 
