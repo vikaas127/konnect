@@ -8,18 +8,21 @@ import 'package:konnect/theme/theme.dart';
 import 'Forgot_password.dart';
 
 class LoginPage extends StatelessWidget {
-  final controllerEmailId = TextEditingController(text: 'rakeshsuvidya@gmail.com');
-  final controllerPassword = TextEditingController(text: 'singh123');
+  final controllerEmailId = TextEditingController(//text: 'rakeshsuvidya@gmail.com'
+     );
+  final controllerPassword = TextEditingController(//text: 'singh123'
+  );
 
   TextStyle get _style => TextStyle(
-        color: Colors.blueAccent,
+        color: Colors.white,
         fontWeight: FontWeight.bold,
       );
 
   @override
   Widget build(BuildContext context) {
     bool _obscureText = true;
-    return Scaffold(backgroundColor: Colors.white,
+    return Scaffold(appBar: AppBar(title: Text("",style: theme().title16w,),),
+      backgroundColor: Colors.white,
       body:
       /* Stack(
         children: <Widget>[
@@ -109,7 +112,8 @@ class LoginPage extends StatelessWidget {
                               style: TextStyle(color: MyColors.primaryLight),),
                             color: Colors.transparent,
                             onPressed: () {
-                            *//*
+                            */
+      /*
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -135,7 +139,7 @@ class LoginPage extends StatelessWidget {
           padding: EdgeInsets.only(left: 24, right: 24),
           shrinkWrap: true,
           children: [
-            SizedBox(height: MediaQuery.of(context).size.height*.18,),
+            SizedBox(height: MediaQuery.of(context).size.height*.05,),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 48,vertical: 10),
               child: Image.asset(
@@ -147,28 +151,32 @@ class LoginPage extends StatelessWidget {
             Container(
                 padding: EdgeInsets.all(18),
                 child:
-                Center(child: Text('Login',style:theme().title18 ,))),
-            SizedBox(height: MediaQuery.of(context).size.height*.05,),
+                Center(child: Text('LOGIN',style:theme().title20b ,))),
+            SizedBox(height: MediaQuery.of(context).size.height*.03,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 4),
               child: Container(height: 55,
-                child: TextFormField(
-                  keyboardType: TextInputType.emailAddress,
-                  autofocus: false,
-                  style: _style,
-                  controller: controllerEmailId,
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                    border: OutlineInputBorder(borderRadius:
-                    BorderRadius.circular(30.0)),
-                    hintText: 'Email',
-                    fillColor: Colors.grey,
+                child: Material(elevation: 20.0,shadowColor: Colors.grey,
+                  child: TextFormField(
+                    keyboardType: TextInputType.emailAddress,
+                    autofocus: false,
+                    style: _style,
+                    controller: controllerEmailId,
+                    decoration: InputDecoration(
+                      contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                      border: OutlineInputBorder(borderSide: BorderSide.none,
+                          borderRadius:
+                      BorderRadius.circular(30.0)),
+                      hintText: 'Email',
+                      filled: true,
+                      fillColor: Color(0xffff7f50),
 
-                    hintStyle: theme().title16g,
-                       prefixIcon: Icon(
+                      hintStyle: theme().title16w,
+                         prefixIcon: Icon(
     Icons.email_outlined,
-    color: Colors.grey,
+    color: MyColors.white,
     ),
+                    ),
                   ),
                 ),
               ),
@@ -178,30 +186,36 @@ class LoginPage extends StatelessWidget {
               builder: (_, setState) => Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical:4 ),
                 child: Container(height: 55,
-                  child: TextFormField(
-                    style: _style,
-                    controller: controllerPassword,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(borderRadius:
-                      BorderRadius.circular(30.0)),
-                      hintText: 'Password', contentPadding:
-                    EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                      hintStyle: theme().title16g,
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                          _obscureText ? Icons.visibility : Icons.visibility_off,
-                          color: Colors.grey,
+                  child: Material(shadowColor: Colors.grey,elevation: 20.0,
+                    child: TextFormField(
+                      style: _style,
+                      controller: controllerPassword,
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Color(0xffff7f50),
+                        border:
+                        OutlineInputBorder(borderSide: BorderSide.none,
+                            borderRadius:
+                        BorderRadius.circular(30.0)),
+                        hintText: 'Password', contentPadding:
+                      EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                        hintStyle: theme().title16w,
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            _obscureText ? Icons.visibility : Icons.visibility_off,
+                            color: Colors.white,
+                          ),
+                          onPressed: () =>
+                              setState(() => _obscureText = !_obscureText),
                         ),
-                        onPressed: () =>
-                            setState(() => _obscureText = !_obscureText),
+                        prefixIcon: Icon(
+                          Icons.lock_open,
+                          color: MyColors.white,
+                        ),
+                      //  hintText: 'Password',
                       ),
-                      prefixIcon: Icon(
-                        Icons.lock_open,
-                        color: Colors.grey,
-                      ),
-                    //  hintText: 'Password',
+                      obscureText: _obscureText,
                     ),
-                    obscureText: _obscureText,
                   ),
                 ),
               ),
@@ -220,13 +234,13 @@ class LoginPage extends StatelessWidget {
               child: Container(
                   padding: EdgeInsets.all(18),
                   child:
-                  Text('Forgotten Password?',style:theme().title16b ,)),
+                  Text('Forgot Password?',style:theme().title16b ,)),
             ),
-            SizedBox(height: 5),
+            SizedBox(height: 1),
             Container(
               height: 50.0,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                padding: const EdgeInsets.symmetric(horizontal: 48.0),
                 child: RaisedButton(
                   onPressed: () {
                     var emailId = controllerEmailId.text;
@@ -267,7 +281,13 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
             ),
-
+SizedBox(height: 1,),
+            TextButton(onPressed: null,
+    child: Container(
+    padding: EdgeInsets.all(18),
+    child:
+    Text('New User? Register',style:theme().title16b ,)),
+    ),
 
           ]),
     );

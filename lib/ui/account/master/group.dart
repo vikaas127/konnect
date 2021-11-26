@@ -112,7 +112,7 @@ class GroupsPage extends StatelessWidget {
             return SearchListView(
               controller: controller,
               children: _list
-                  .map((modal) => Card(shadowColor: MyColors.iconc,
+                  .map((modal) => Card(
 
                         child: ListTile(
                           onTap: () => Navigator.pushNamed(

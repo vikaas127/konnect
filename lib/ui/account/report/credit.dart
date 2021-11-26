@@ -4,13 +4,82 @@ import 'package:konnect/component/route_name.dart';
 import 'package:konnect/modal/modal.dart';
 
 import 'package:konnect/component/component.dart';
+import 'package:konnect/theme/theme.dart';
 
 class CreditPage extends StatelessWidget {
+  TextEditingController searchController = new TextEditingController();
+  onChanged(String value) {
+    /* _list= <PeriodsModal>[];
+    search.forEach((item) {
+      String q1= item.getSnapshot['NAME'];
+
+      setState(() {
+        if (q1.toLowerCase().contains(value.toLowerCase())){
+
+          print('search item name ${item.getSnapshot['NAME']} == ${value} ');
+          _list.add(item);
+        }
+      });
+
+    });*/
+  }
+  OutlineInputBorder myfocusborder(){
+    return OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(20)),
+        borderSide: BorderSide(
+          color:Colors.white,
+          width: 1,
+        )
+    );
+  }
   @override
   Widget build(BuildContext context) {
     PeriodsModal services = PeriodsModal.of(context);
     return Scaffold(
-      appBar: AppBar(title: const Text('Credit Note')),
+      appBar: AppBar(title:  Text('Credit Note',style: theme().title16w,),
+        bottom:
+        PreferredSize(child:Column(
+          children: [
+            new Padding(
+
+              padding: new EdgeInsets.symmetric(vertical: 4.0,horizontal: 18),
+              child: Container(
+                height: 45,
+                child: new TextField(onTap: (){
+                  /*  Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) =>
+                      // VerificationPhoneRoute()
+                      Searchscreen()
+                    //  FormSignUpRoute()
+                  ),
+                );*/
+                },
+                  onChanged: onChanged,
+                  controller: searchController,
+                  decoration: InputDecoration(
+                    focusedBorder: myfocusborder(),filled: true,
+                    fillColor: Colors.white,hintStyle:TextStyle(color: Colors.grey) ,
+                    prefixIcon:
+                    IconButton(onPressed: null,icon:Icon(Icons.search),color: Colors.black,),
+                    hintText: 'credit note....',
+                    contentPadding: EdgeInsets.fromLTRB(25.0, 15.0, 25.0, 15.0),
+                    border: OutlineInputBorder(
+
+                        borderSide: BorderSide(
+                          color:Colors.white,
+                          width: 1,
+                        ),
+                        borderRadius: BorderRadius.circular(20.0)),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 10,)
+          ],
+        ) ,
+          preferredSize: MediaQuery.of(context).size*0.07,),),
       body: FutureBuilder(
         future: services.account.getCreditNote(),
         builder: (_, AsyncSnapshot<List<InvoiceModal>> snapshot) {
@@ -38,15 +107,14 @@ class CreditPage extends StatelessWidget {
             return SearchListView(
               controller: controller,
               children: _list
-                  .map((modal) => Card(
-                        color: Colors.grey[100],
+                  .map((modal) => Card( color: Colors.grey[100],
                         child: ListTile(
                           onTap: () => Navigator.pushNamed(
                             context,
                             CREDIT_VIEW,
                             arguments: modal,
                           ),
-                          title: Text(modal.partyLedgerName ?? 'Name'),
+                          title: Text(modal.partyLedgerName ?? 'Name',style: theme().title16b,),
                         ),
                       ))
                   .toList(),

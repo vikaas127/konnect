@@ -1,6 +1,11 @@
 import 'dart:convert';
 
 class LedgerModal {
+  String ? pincode;
+  String ? bankname;
+  String ? bankno;
+  String? incometexnumber;
+  String? ifsccode;
   String? gstRegistrationType;
   String? openingBalance;
   String? ledStateName;
@@ -14,7 +19,11 @@ class LedgerModal {
   String? isEBankingEnabled;
   String? countryName;
 
-  LedgerModal({
+  LedgerModal({this.pincode,
+    this.bankname,
+    this.bankno,
+    this.incometexnumber,
+    this.ifsccode,
     this.gstRegistrationType,
     this.openingBalance,
     this.ledStateName,
@@ -30,6 +39,11 @@ class LedgerModal {
   });
 
   LedgerModal.fromJson(Map<String, dynamic>? json) {
+    pincode=json?['PINCODE']??'';
+    bankname =json?['INCOMETAXNUMBER']??'';
+    bankno =json?['ACCOUNTNUMBER']??'';
+    incometexnumber =json?['INCOMETAXNUMBER']??'';
+    ifsccode=json?['IFSCODE']??'';
     gstRegistrationType = json?['GSTREGISTRATIONTYPE'] ?? '';
     openingBalance = json?['OPENINGBALANCE'] ?? '';
     ledStateName = json?['LEDSTATENAME'] ?? '';
@@ -46,6 +60,11 @@ class LedgerModal {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['PINCODE']= this.pincode;
+    data['INCOMETAXNUMBER']=this.incometexnumber;
+    data['ACCOUNTNUMBER']= this.bankno;
+    data['BANKNAME']=this.bankname;
+    data['IFSCODE']=this.ifsccode;
     data['GSTREGISTRATIONTYPE'] = this.gstRegistrationType;
     data['OPENINGBALANCE'] = this.openingBalance;
     data['LEDSTATENAME'] = this.ledStateName;

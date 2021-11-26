@@ -16,24 +16,9 @@ appBar:  AppBar(backgroundColor: MyColors.primary,
     leading: IconButton(icon:Icon(Icons.arrow_back_ios),onPressed: (){
       Navigator.of(context).pop(true);
 },),
-    title: Text('${periods.id} FY',style: theme().title16w,), actions: [
-  PopupMenuButton(
-    onSelected: (index) {
-      PeriodsModal.of(context).setSnapshot(
-        snapshot: periods.snapshot,
-        index: index as int,
-      );
-    },
-    itemBuilder: (BuildContext context) {
-      return [
-        for (int index = 0; index < periods.length; index++)
-          PopupMenuItem(
-            value: index,
-            child: Text(periods.getId(index)),
-          )
-      ];
-    },
-  )
+    title: Text('${periods.id} FY',style: theme().title16w,), actions:
+    [
+
 ]),
       body: Stack(
         children: <Widget>[
@@ -52,7 +37,8 @@ appBar:  AppBar(backgroundColor: MyColors.primary,
                       shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0),
                     ),
-                      child: Container( decoration: BoxDecoration(
+                      child: Container(
+                        decoration: BoxDecoration(
 
                         gradient: LinearGradient(
                             begin: Alignment.bottomLeft,
@@ -172,17 +158,35 @@ appBar:  AppBar(backgroundColor: MyColors.primary,
     decoration: BoxDecoration(borderRadius: BorderRadius.circular(15.0),
     border: Border.all(color: MyColors.iconc)
     ),
-                                    child: DropdownButton<String>( icon: Icon(Icons.arrow_drop_down_sharp,color: MyColors.primary,),
+                                    child: PopupMenuButton(child: Center(child: Text("${periods.id} FY",style: theme().title10w,)),
+                                      onSelected: (index) {
+                                        PeriodsModal.of(context).setSnapshot(
+                                          snapshot: periods.snapshot,
+                                          index: index as int,
+                                        );
+                                      },
+                                      itemBuilder: (BuildContext context) {
+                                        return [
+                                          for (int index = 0; index < periods.length; index++)
+                                            PopupMenuItem(
+                                              value: index,
+                                              child: Text(periods.getId(index)),
+                                            )
+                                        ];
+                                      },
+                                    )
+                                    /*DropdownButton<String>( value: '${periods.id} FY',
+                                      icon: Icon(Icons.arrow_drop_down_sharp,color: MyColors.primary,),
                                       underline: Container(),
-                                      items: <String>['A', 'B', 'C', 'D'].map((String value) {
+                                      items:periods.snapshot.map((dynamic value) {
                                         return DropdownMenuItem<String>(
                                           value: value,
                                           child: Container(width: 100,
-                                              child: Text(value)),
+                                              child: Text(value.id)),
                                         );
                                       }).toList(),
                                       onChanged: (_) {},
-                                    ),
+                                    )*/
                                   )
 
                                 ),

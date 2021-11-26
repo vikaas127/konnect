@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:konnect/modal/modal.dart';
 import 'package:konnect/theme/MyText.dart';
 import 'package:konnect/theme/mycolors.dart';
@@ -11,14 +12,15 @@ class ForgotPage extends StatelessWidget {
 
 
   TextStyle get _style => TextStyle(
-    color: Colors.blueAccent,
+    color: Colors.white,
     fontWeight: FontWeight.bold,
   );
 
   @override
   Widget build(BuildContext context) {
     bool _obscureText = true;
-    return Scaffold(backgroundColor: Colors.white,
+    return Scaffold(appBar: AppBar(),
+      backgroundColor: Colors.white,
       body:
       /* Stack(
         children: <Widget>[
@@ -134,7 +136,7 @@ class ForgotPage extends StatelessWidget {
           padding: EdgeInsets.only(left: 24, right: 24),
           shrinkWrap: true,
           children: [
-            SizedBox(height: MediaQuery.of(context).size.height*.18,),
+            SizedBox(height: MediaQuery.of(context).size.height*.05,),
 
             Container(
               padding: EdgeInsets.symmetric(horizontal: 48,vertical: 10),
@@ -147,7 +149,7 @@ class ForgotPage extends StatelessWidget {
             Container(
                 padding: EdgeInsets.all(18),
                 child:
-                Center(child: Text('Forgot Password',style:theme().title18 ,))),
+                Center(child: Text('FORGOT PASSWORD',style:theme().title20b ,))),
             // SizedBox(height: MediaQuery.of(context).size.height*.02,),
 
             SizedBox(height: MediaQuery.of(context).size.height*.05,),
@@ -161,15 +163,16 @@ class ForgotPage extends StatelessWidget {
                   controller: controllerEmailId,
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                    border: OutlineInputBorder(borderRadius:
+                    border: OutlineInputBorder(borderSide: BorderSide.none,
+                        borderRadius:
                     BorderRadius.circular(30.0)),
-                    hintText: 'Email',
-                    fillColor: Colors.grey,
+                    hintText: 'Email',filled: true,
+                    fillColor: Color(0xffff7f50),
 
-                    hintStyle: theme().title16g,
+                    hintStyle: theme().title16w,
                     prefixIcon: Icon(
                       Icons.email_outlined,
-                      color: Colors.grey,
+                      color: Colors.white,
                     ),
                   ),
                 ),
@@ -180,7 +183,7 @@ class ForgotPage extends StatelessWidget {
             Container(
               height: 50.0,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                padding: const EdgeInsets.symmetric(horizontal: 38.0),
                 child: RaisedButton(
                   onPressed: () {
                     var emailId = controllerEmailId.text;
@@ -196,11 +199,27 @@ class ForgotPage extends StatelessWidget {
                       return;
                     }
                     var modal = AuthModel.of(context);
-                    modal.forgotpass(email: emailId, );
+                    modal.forgotpass(email: emailId, ).then((value) =>Fluttertoast.showToast(
+                        msg: "Verification Link sent to  ${emailId}",
+                        toastLength: Toast.LENGTH_LONG,
+                        gravity: ToastGravity.CENTER,
+                        timeInSecForIosWeb: 1,
+                        backgroundColor: Colors.black12,
+                        textColor: Colors.black,
+                        fontSize: 16.0
+                    )
+                       /* showModalBottomSheet(
+                        context: context,
+                        builder: (context) {
+                          return Container(height: 100,width: MediaQuery.of(context).size.width,
+                              child: Center(child: Text("Verification Link sent to  ${emailId}",style: theme().title14b,)));
+                        })*/
+                        );
                   },
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(80.0)),
                   padding: EdgeInsets.all(0.0),
                   child: Ink(
+
                     decoration: BoxDecoration(
                         gradient: LinearGradient(colors: [Color(0xff374ABE), Color(0xff64B6FF)],
                           begin: Alignment.centerLeft,
@@ -212,7 +231,7 @@ class ForgotPage extends StatelessWidget {
                       //   constraints: BoxConstraints(maxWidth: 300.0, minHeight: 50.0),
                       alignment: Alignment.center,
                       child: Text(
-                        "Send Request On Mail",
+                        "SUBMIT",
                         textAlign: TextAlign.center,
                         style: theme().title16w,
                       ),

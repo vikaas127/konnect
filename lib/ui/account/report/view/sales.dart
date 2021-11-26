@@ -1,16 +1,97 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:konnect/modal/modal.dart';
+import 'package:konnect/theme/theme.dart';
+import 'package:konnect/ui/account/pdfview/SalesInvoicerpdf.dart';
+class SalesViewPage extends StatefulWidget{
 
-class SalesViewPage extends StatelessWidget {
   final InvoiceModal _modal;
 
   const SalesViewPage(
-    this._modal, {
-    Key? key,
-  }) : super(key: key);
+      this._modal, {
+        Key? key,
+      }) : super(key: key);
+  @override
+  State<StatefulWidget> createState() {
+   return SalesViewPage_state();
+  }
 
+}
+class SalesViewPage_state extends State<SalesViewPage> {
+
+late DataTable dataTable;
+
+  @override
+  void initState() {
+    super.initState();
+
+
+  }
+  DataCell getDataCell12(String value) {
+    try {
+      return DataCell(
+        Text(
+          value,
+          style: GoogleFonts.lato(fontSize: 18, color: Colors.black54),
+        ),
+      );
+    } catch (e) {
+      return DataCell(
+        Text(
+          ' ',
+          style: TextStyle(fontSize: 18, color: Colors.black54),
+        ),
+      );
+    }
+  }
+  DataCell getDataCell(List<String> list, int pos) {
+    try {
+      return DataCell(
+        Text(
+          list[pos],
+          style: TextStyle(fontSize: 18, color: Colors.black54),
+        ),
+      );
+    } catch (e) {
+      return DataCell(
+        Text(
+          ' ',
+          style: TextStyle(fontSize: 18, color: Colors.black54),
+        ),
+      );
+    }
+  }
+  Widget getRowDesign(String? text, double fontSize) {
+    return Padding(
+      padding: EdgeInsets.only(top: 3, bottom: 3),
+      child: Text(
+        text!,
+        style: GoogleFonts.lato(
+            fontSize: fontSize,
+            color: Colors.black,
+            fontWeight: FontWeight.bold),
+      ),
+    );
+  }
+  DataCell getDataCell1(List<String> list, int pos, String spc) {
+    try {
+      return DataCell(
+        Text(
+          spc + '' + list[pos],
+          style: TextStyle(fontSize: 18, color: Colors.black54),
+        ),
+      );
+    } catch (e) {
+      return DataCell(
+        Text(
+          ' ',
+          style: TextStyle(fontSize: 18, color: Colors.black54),
+        ),
+      );
+    }
+  }
   Widget _key(String key) {
     return Padding(
       padding: const EdgeInsets.only(
@@ -21,7 +102,6 @@ class SalesViewPage extends StatelessWidget {
       child: Text(key),
     );
   }
-
   Widget _value(String value) {
     return Padding(
       padding: const EdgeInsets.only(
@@ -39,23 +119,183 @@ class SalesViewPage extends StatelessWidget {
     return DateFormat('dd MMMM yyyy').format(inputDate);
   }
 
-  bool isEqual(e) => e.ledgerName == _modal.partyLedgerName;
+  bool isEqual(e) => e.ledgerName == widget._modal.partyLedgerName;
 
   @override
   Widget build(BuildContext context) {
-    PeriodsModal periods = PeriodsModal.of(context);
-    var _list = _modal.ledgerDetails ?? [];
-    var _name = _modal.partyLedgerName;
+    PeriodsModal periods = PeriodsModal.watch(context);
+    CompanyModal company = periods.single;
+    var _list =widget._modal.ledgerDetails ?? [];
+    var _product =widget._modal.products ?? [];
+    var _name = widget._modal.partyLedgerName;
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+    LedgerModal? _ledger;
     return Scaffold(
-      appBar: AppBar(title: Text('Sales View')),
+      appBar: AppBar(
+        actions: [
+          IconButton(icon: Icon(Icons.picture_as_pdf),
+          onPressed: ()
+      {reportSalesInvoice(context, widget._modal,company,_ledger!);}
+      )],
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        title: Text('Tax Invoice'),
+      ),
       body: ListView(
         padding: EdgeInsets.all(18),
         children: [
           FutureBuilder<LedgerModal?>(
             future: periods.account.getLedgerModal(_name),
             builder: (_, AsyncSnapshot<LedgerModal?> snapshot) {
-              LedgerModal? _ledger = snapshot.data;
-              return Table(
+               _ledger = snapshot.data;
+              return _ledger!=null?
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(minWidth:.50*width),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(minHeight: 0.50*height),
+                      child: Padding(
+                        padding: EdgeInsets.all(14),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Container(
+                              width:   width,
+                              child: Stack(
+                                children: <Widget>[
+                                  Center(
+                                    child: getRowDesign('TAX INVOICE', 15),
+                                  ),
+                                  Image.asset('assets/logo.png',
+
+                                    height: 80,
+                                    width: 60,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Container(
+                                  width: 0.75 * width,
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      getRowDesign(company.name, 18),
+                                      getRowDesign(company.address, 15),
+                                      getRowDesign('GST No :- ' + company.gstin!, 15),
+                                      getRowDesign('Email :- ' +company.email!, 15),
+                                      getRowDesign('INVOICE NO :- ${widget._modal.narration}', 15),
+                                      getRowDesign('Date :- ${widget._modal.voucherDate}', 15),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  width: 0.75 * width,
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      getRowDesign(widget._modal.partyLedgerName, 18),
+                                      getRowDesign('${_ledger!.address}', 15),
+                                      getRowDesign('GST No :- ${_ledger!.partyGstin}', 15),
+                                      getRowDesign('Address :- ${_ledger!.address!}', 15),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            DataTable(
+                              columns: [
+                                DataColumn(label: Text('ITEM',style: theme().title16b)),
+                            //   DataColumn(label: Text('HSN',style: theme().title16b,)),
+                                DataColumn(label: Text('UNIT',style: theme().title16b,)),
+                                DataColumn(label: Text('RATE',style: theme().title16b,)),
+                                DataColumn(label: Text('QTY',style: theme().title16b,)),
+                                //DataColumn(label: Text('AMT')),
+                                DataColumn(label: Text('TOTAL',style: theme().title16b,)),
+                              ], rows: <DataRow>[ ..._product
+                                .map((e) => DataRow(
+                            cells: [
+                            getDataCell12('${e.stockItemName}'),
+                            //  getDataCell12('${e.stockItemName}'),
+                              getDataCell12('PCS'),
+                              getDataCell12('${e.rate}'),
+                              getDataCell12('${e.billedqty}'),
+                              getDataCell12('${e.amount}'),
+                            ]
+                            ))
+                          .toList(),
+                              DataRow(cells: [
+                                getDataCell12(''),
+                                getDataCell12(''),
+                                getDataCell12(''),
+                                getDataCell12(''),
+                                getDataCell12(''),
+                              ],
+
+
+
+                            ),
+                              DataRow(cells: [
+                                getDataCell12(''),
+                                getDataCell12(''),
+                                getDataCell12(''),
+                                getDataCell12(''),
+                                getDataCell12(''),
+                              ],
+
+
+
+                              ),
+                              DataRow(cells: [
+                                getDataCell12(''),
+                                getDataCell12(''),
+                                getDataCell12(''),
+                                getDataCell12(''),
+                                getDataCell12(''),
+                              ],
+
+
+
+                              ),
+                    DataRow(cells: [
+                      getDataCell12(''),
+                      getDataCell12(''),
+                      getDataCell12(' Amount'),
+                      getDataCell12(''),
+                      getDataCell12('${widget._modal.productTotalAmount}'),
+                    ],),
+                    ...widget._modal.ledgerDetails!.reversed!
+                    .map((q) =>
+                  DataRow(cells: [
+                  getDataCell12(''),
+              getDataCell12(''),
+              getDataCell12('${q.ledgerName}'),
+              getDataCell12(''),
+              getDataCell12('${q.amount!.split('-').last}'),
+              ],)),
+
+
+
+
+
+                            //  dataTable,
+                          ],
+                        ),
+            ]),),
+                    ),
+                  ),
+                ),
+
+              ):Center(child: CircularProgressIndicator());
+              /* Table(
                 columnWidths: {
                   0: FlexColumnWidth(1.0),
                   1: FlexColumnWidth(2.0),
@@ -83,24 +323,29 @@ class SalesViewPage extends StatelessWidget {
                   ]),
                   TableRow(children: [
                     _key('voucher no.'),
-                    _value('${_modal.voucherNumber}'),
+                    _value('${widget._modal.voucherNumber}'),
                   ]),
                   TableRow(children: [
                     _key('voucher date'),
-                    _value(dateFormat('${_modal.voucherDate}')),
+                    _value(dateFormat('${widget._modal.voucherDate}')),
                   ]),
                 ],
-              );
+              );*/
             },
           ),
-          SizedBox(height: 36),
-          Table(
+
+       /*   Table(
             columnWidths: {
               0: FlexColumnWidth(2.0),
-              1: FlexColumnWidth(1.0),
+              1: FlexColumnWidth(2.0),
+              2: FlexColumnWidth(2.0),
+              3: FlexColumnWidth(2.0),
+              4: FlexColumnWidth(2.0),
+              5: FlexColumnWidth(2.0),
             },
             children: [
-              ..._list
+
+             *//* ..._list
                   .skipWhile(isEqual)
                   .map((e) => TableRow(children: [
                         _key('${e.ledgerName}'),
@@ -110,13 +355,24 @@ class SalesViewPage extends StatelessWidget {
               TableRow(children: [
                 _key('Total Amount'),
                 _value('${_list.firstWhere(isEqual).amount}'),
-              ]),
+              ])*//*
             ],
-          ),
+          ),*/
           SizedBox(height: 36),
-          Text('${_modal.narration}'),
-        ],
+          Text('${widget._modal.narration}'),
+
+
+
+  //  meo.rakesh2020@gmail.commeo
+
+],
       ),
     );
   }
 }
+
+
+
+
+
+

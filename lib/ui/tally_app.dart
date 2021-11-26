@@ -147,10 +147,11 @@ Widget startApp() => MultiProvider(
           //fontFamily: 'Times New Roman',
 
           inputDecorationTheme: InputDecorationTheme(
-
+fillColor: Color(0xffff7f50),
+            filled: true,
 
             hintStyle: TextStyle(
-              color: Color(0xff374ABE),
+              color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
             border: OutlineInputBorder(),

@@ -9,7 +9,6 @@ import 'package:konnect/ui/Profile/profile_page.dart';
 
 class LedgerPage extends StatelessWidget {
   TextEditingController searchController = new TextEditingController();
-
   onChanged(String value) {
    /* _list= <PeriodsModal>[];
     search.forEach((item) {
@@ -25,8 +24,6 @@ class LedgerPage extends StatelessWidget {
 
     });*/
   }
-
-
   OutlineInputBorder myfocusborder(){
     return OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(20)),

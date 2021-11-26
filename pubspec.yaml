@@ -9,6 +9,8 @@ dependencies:
   flutter:
     sdk: flutter
   pdf: ^3.4.2
+  path:
+  flutter_full_pdf_viewer: ^1.0.6
   intl: ^0.17.0
   share: ^2.0.4
   google_fonts:
@@ -25,6 +27,7 @@ dependencies:
   advance_pdf_viewer: ^2.0.0
   double_back_to_close: ^2.0.0
   line_awesome_flutter: ^2.0.0
+  image_cropper:
   webview_flutter:
   fluttertoast:
   shimmer:

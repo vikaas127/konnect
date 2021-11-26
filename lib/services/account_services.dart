@@ -95,6 +95,7 @@ class AccountDocument {
   Future<LedgerModal?> getLedgerModal(String? ledger) async {
     var path = (ledger ?? '').replaceAll('/', '-');
     var snapshot = await ledgerReference.doc(path).get();
+    print(snapshot.data());
     print('Document Snapshot $path is ${snapshot.exists}');
 
     return snapshot.exists ? snapshot.data() : null;
@@ -111,8 +112,10 @@ class AccountDocument {
     return snapshot.docs.map((element) => element.data()).toList();
   }
   Future<List<LedgerModal>> getLedger() async {
+
     var snapshot = await ledgerReference.orderBy('NAME').get();
     print('${ledgerReference.id} has ${snapshot.size} document');
+    print(snapshot.docs.map((e) => print(e.data().toString())));
     return snapshot.docs.map((element) => element.data()).toList();
   }
   /* ********************************************************** */

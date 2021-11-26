@@ -5,11 +5,7 @@ import 'package:konnect/theme/theme.dart';
 import 'package:konnect/ui/index/index.dart';
 import 'package:konnect/ui/like.dart';
 import 'package:konnect/ui/Notification.dart' as d;
-
-
 import 'Explore.dart';
-
-
 class home extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
